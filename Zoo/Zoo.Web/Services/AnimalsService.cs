@@ -18,7 +18,12 @@ namespace Zoo.Web.Services
 
         public void FeedAnimals()
         {
-            foreach (var animal in this.db.GetAnimals())
+            var animalsToFeed = this.db
+                .GetAnimals()
+                .Where(a => a.IsAlive)
+                .OrderByDescending(a => a.Health);
+
+            foreach (var animal in animalsToFeed)
             {
                 animal.Feed();
             }
@@ -32,6 +37,30 @@ namespace Zoo.Web.Services
         public IEnumerable<Animal> GetAll()
         {
             return this.db.GetAnimals();
+        }
+
+        public void Hunger()
+        {
+            var animalHunterRate = new Random().Next(15, 35);
+
+            foreach (var monkey in this.db.GetMonkeys())
+            {
+                monkey.Hunger(animalHunterRate);
+            }
+
+            animalHunterRate = new Random().Next(15, 35);
+
+            foreach (var giraffe in this.db.GetGiraffes())
+            {
+                giraffe.Hunger(animalHunterRate);
+            }
+
+            animalHunterRate = new Random().Next(15, 35);
+
+            foreach (var bear in this.db.GetBears())
+            {
+                bear.Hunger(animalHunterRate);
+            }
         }
     }
 }

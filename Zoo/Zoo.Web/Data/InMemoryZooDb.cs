@@ -30,5 +30,20 @@ namespace Zoo.Web.Data
         {
             return this.animals.OrderBy(a => a.GetType().Name);
         }
+
+        public IEnumerable<Animal> GetMonkeys()
+        {
+            return this.animals.Where(a => a.GetType().Name == "Monkey").ToList();
+        }
+
+        public IEnumerable<Animal> GetGiraffes()
+        {
+            return this.animals.Where(a => a.GetType().Name == "Giraffe").ToList();
+        }
+
+        public IEnumerable<Animal> GetBears()
+        {
+            return this.animals.Where(a => a.GetType().Name == "Bear").ToList();
+        }
     }
 }

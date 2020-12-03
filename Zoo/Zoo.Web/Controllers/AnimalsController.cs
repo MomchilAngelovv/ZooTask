@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Threading.Tasks;
 using Zoo.Web.Services;
 using Zoo.Web.ViewModels.Home;
@@ -32,6 +33,13 @@ namespace Zoo.Web.Controllers
         public IActionResult Feed()
         {
             this.animalsService.FeedAnimals();
+
+            return this.RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Hunger()
+        {
+            this.animalsService.Hunger();
 
             return this.RedirectToAction(nameof(Index));
         }

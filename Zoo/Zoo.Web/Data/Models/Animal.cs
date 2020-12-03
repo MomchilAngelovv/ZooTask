@@ -14,17 +14,23 @@ namespace Zoo.Web.Data.Models
             IsAlive = true;
         }
 
+
         public void Feed()
         {
-            var randomHealthValue = new Random().Next(10, 25);
-
-            this.Health += randomHealthValue;
-
-            if (this.Health > 100)
+            if (this.IsAlive)
             {
-                this.Health = 100;
+                var randomHealthValue = new Random().Next(10, 25);
+
+                this.Health += randomHealthValue;
+
+                if (this.Health > 100)
+                {
+                    this.Health = 100;
+                }
             }
         }
+
+        public abstract void Hunger(int hungerRate);
 
         public abstract string Information();
     }

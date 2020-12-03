@@ -7,6 +7,7 @@ using Zoo.Web.Services;
 
 namespace Zoo.Web.Controllers
 {
+    [ApiController]
     [Route("[controller]")]
     public class ApiController : ControllerBase
     {

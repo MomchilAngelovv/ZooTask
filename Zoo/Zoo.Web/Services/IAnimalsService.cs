@@ -9,6 +9,7 @@ namespace Zoo.Web.Services
     public interface IAnimalsService
     {
         void FeedAnimals();
+        void Hunger();
         IEnumerable<Animal> GetAll();
         int GetAliveAnimalsCount();
     }
