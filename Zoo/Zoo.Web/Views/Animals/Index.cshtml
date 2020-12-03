@@ -5,7 +5,7 @@
 
 <h1 class="text-center">Animals</h1>
 <div class="row justify-content-around">
-  <div class="col-6">
+  <div class="col-5">
     <ul class="list-group">
       @foreach (var animal in Model.Animals)
       {
@@ -20,7 +20,7 @@
       }
     </ul>
   </div>
-  <div class="col-6">
+  <div class="col-7">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Actions
@@ -32,6 +32,7 @@
     </div>
     <hr />
     <button id="btn-alive-animals-count" type="button" class="btn btn-info">Alive animals count</button>
+    <hr />
     <button type="button" class="btn btn-info min-health" animalType="Monkey">Monkeys min health</button>
     <button type="button" class="btn btn-info min-health" animalType="Giraffe">Giraffes min health</button>
     <button type="button" class="btn btn-info min-health" animalType="Bear">Bears min health</button>
