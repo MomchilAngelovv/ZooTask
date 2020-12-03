@@ -12,18 +12,14 @@ namespace Zoo.Web.Data.Models
         {
             if (this.IsAlive)
             {
-                this.Health = Math.Max(0, this.Health - hungerRate);
+                this.Health -= hungerRate;
 
                 if (this.Health < Constants.MonkeyMinHealthValue)
                 {
                     this.IsAlive = false;
+                    this.Health = 0;
                 }
             }
-        }
-
-        public override string Information()
-        {
-            return $"{Constants.MonkeyAnimalType} => Current health: {this.Health}/100 => Is alive: {this.IsAlive}";
         }
     }
 }

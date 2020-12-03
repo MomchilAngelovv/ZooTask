@@ -10,20 +10,13 @@ namespace Zoo.Web.Data.Models
     {
         public override void Hunger(int hungerRate)
         {
-            if (this.IsAlive)
+            if (this.IsAlive && this.Health < Constants.GiraffeMinHealthValue)
             {
-                if (this.Health < Constants.GiraffeMinHealthValue)
-                {
-                    this.IsAlive = false;
-                }
-
-                this.Health = Math.Max(0, this.Health - hungerRate);
+                this.IsAlive = false;
+                this.Health = 0;
             }
-        }
 
-        public override string Information()
-        {
-            return $"{Constants.GiraffeAnimalType} => Current health: {this.Health}/100 => Is alive: {this.IsAlive}";
+            this.Health = Math.Max(0, this.Health - hungerRate);
         }
     }
 }

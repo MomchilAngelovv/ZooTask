@@ -12,5 +12,6 @@ namespace Zoo.Web.Services
         void Hunger();
         IEnumerable<Animal> GetAll();
         int GetAliveAnimalsCount();
+        int GetMinHealthByAnimalType(string animalType);
     }
 }

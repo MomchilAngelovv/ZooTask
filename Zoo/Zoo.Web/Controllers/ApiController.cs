@@ -30,5 +30,19 @@ namespace Zoo.Web.Controllers
 
             return response;
         }
+
+        [HttpGet("animals/minhealth")]
+        public ActionResult<object> GetAliveAnimalsCount(string animalType)
+        {
+            var minHealth = this.animalsService.GetMinHealthByAnimalType(animalType);
+
+            var response = new
+            {
+                AnimalType = animalType,
+                MinHealth = minHealth
+            };
+
+            return response;
+        }
     }
 }

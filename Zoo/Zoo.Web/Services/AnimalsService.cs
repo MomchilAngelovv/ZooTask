@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Zoo.Web.Common;
 using Zoo.Web.Data;
 using Zoo.Web.Data.Models;
 
@@ -70,6 +71,29 @@ namespace Zoo.Web.Services
             {
                 bear.Hunger(animalHunterRate);
             }
+        }
+
+        public int GetMinHealthByAnimalType(string animalType)
+        {
+            var animalsFromType = animalType switch
+            {
+                Constants.MonkeyAnimalType => this.db.GetMonkeys(),
+                Constants.GiraffeAnimalType => this.db.GetGiraffes(),
+                Constants.BearAnimalType => this.db.GetBears(),
+                _ => null
+            };
+
+            var animalWithMinimumHealth = animalsFromType
+                .Where(a => a.IsAlive)
+                .OrderBy(a => a.Health)
+                .FirstOrDefault();
+
+            if (animalWithMinimumHealth == null)
+            {
+                return 0;
+            }
+
+            return animalWithMinimumHealth.Health;
         }
     }
 }

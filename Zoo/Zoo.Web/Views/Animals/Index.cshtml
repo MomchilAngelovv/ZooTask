@@ -31,9 +31,16 @@
       </div>
     </div>
     <hr />
-    <button id="btn-alive-animals-count" type="button" class="btn btn-info">Get alive animals count</button>
+    <button id="btn-alive-animals-count" type="button" class="btn btn-info">Alive animals count</button>
+    <button type="button" class="btn btn-info min-health" animalType="Monkey">Monkeys min health</button>
+    <button type="button" class="btn btn-info min-health" animalType="Giraffe">Giraffes min health</button>
+    <button type="button" class="btn btn-info min-health" animalType="Bear">Bears min health</button>
     <hr />
     <div id="alert-alive-animals-count" class="alert alert-success" role="alert" style="display:none">
+
+    </div>
+    <div id="alert-min-health" class="alert alert-warning" role="alert" style="display:none">
+
     </div>
   </div>
 </div>
@@ -45,7 +52,17 @@
 
       const data = await response.json();
 
-      $("#alert-alive-animals-count").text(`Alive animals: ${data.aliveAnimalscount}`).toggle(200);
+      $("#alert-alive-animals-count").text(`Alive animals: ${data.aliveAnimalscount}`).toggle(50);
+    });
+
+    $(".min-health").click(async function () {
+      const animalType = this.getAttribute("animalType")	
+
+      const response = await fetch(`https://localhost:44308/api/animals/minhealth?animalType=${animalType}`);
+      const data = await response.json();
+
+      $("#alert-min-health").hide(50);
+      $("#alert-min-health").text(`Animal type: ${data.animalType} => Min health; ${data.minHealth}`).toggle(200);
     });
   </script>
 }

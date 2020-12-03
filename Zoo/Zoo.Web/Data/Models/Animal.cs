@@ -14,7 +14,6 @@ namespace Zoo.Web.Data.Models
             IsAlive = true;
         }
 
-
         public void Feed()
         {
             //MaxValue value in Random.Next() is EXCLUDING so this is why I put Constants.FeedMaxValue + 1
@@ -29,6 +28,9 @@ namespace Zoo.Web.Data.Models
         }
 
         public abstract void Hunger(int hungerRate);
-        public abstract string Information();
+        public string Information()
+        {
+            return $"{this.GetType().Name} => Current health: {this.Health}/{Constants.MaxAnimalHealthValue} => Is alive: {this.IsAlive}";
+        }
     }
 }
