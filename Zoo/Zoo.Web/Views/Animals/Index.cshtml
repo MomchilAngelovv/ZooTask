@@ -63,7 +63,7 @@
       const data = await response.json();
 
       $("#alert-min-health").hide(50);
-      $("#alert-min-health").text(`Animal type: ${data.animalType} => Min health; ${data.minHealth}`).toggle(200);
+      $("#alert-min-health").text(`Animal type: ${data.animalType} => Min health: ${data.minHealth}`).toggle(200);
     });
   </script>
 }
