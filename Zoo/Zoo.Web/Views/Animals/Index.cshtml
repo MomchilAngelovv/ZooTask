@@ -1,0 +1,27 @@
+﻿@model Zoo.Web.ViewModels.Home.IndexViewModel
+@{
+  ViewData["Title"] = "Home Page";
+}
+
+<h1>Animals</h1>
+<div class="row justify-content-around">
+  <div class="col-6">
+    <ul class="list-group">
+      @foreach (var animal in Model.Animals)
+      {
+        <li class="list-group-item">@animal.Information()</li>
+      }
+    </ul>
+  </div>
+  <div class="col-6">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Actions
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a asp-controller="Aniamls" asp-action="Feed" class="dropdown-item">Feed</a>
+        <a class="dropdown-item" href="#">Hunger</a>
+      </div>
+    </div>
+  </div>
+</div>
