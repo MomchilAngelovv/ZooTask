@@ -18,10 +18,14 @@ namespace Zoo.Web.Services
 
         public void FeedAnimals()
         {
+            var aliveAnimalsCount = this.GetDeadAnimalsCount();
+
             var animalsToFeed = this.db
                 .GetAnimals()
                 .Where(a => a.IsAlive)
-                .OrderByDescending(a => a.Health);
+                .OrderByDescending(a => a.Health)
+                .Take((int)(Math.Floor((30 - aliveAnimalsCount) * 0.9)))
+                .ToList();
 
             foreach (var animal in animalsToFeed)
             {
@@ -32,6 +36,11 @@ namespace Zoo.Web.Services
         public int GetAliveAnimalsCount()
         {
             return this.db.GetAnimals().Count(a => a.IsAlive);
+        }
+
+        public int GetDeadAnimalsCount()
+        {
+            return this.db.GetAnimals().Count(a => !a.IsAlive);
         }
 
         public IEnumerable<Animal> GetAll()

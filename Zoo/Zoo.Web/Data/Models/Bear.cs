@@ -14,7 +14,7 @@ namespace Zoo.Web.Data.Models
             {
                 this.Health = Math.Max(0, this.Health - hungerRate);
 
-                if (this.Health < 60)
+                if (this.Health < Constants.BearMinHealthValue)
                 {
                     this.IsAlive = false;
                 }

@@ -3,13 +3,20 @@
   ViewData["Title"] = "Home Page";
 }
 
-<h1>Animals</h1>
+<h1 class="text-center">Animals</h1>
 <div class="row justify-content-around">
   <div class="col-6">
     <ul class="list-group">
       @foreach (var animal in Model.Animals)
       {
-        <li class="list-group-item">@animal.Information()</li>
+        if (animal.IsAlive)
+        {
+          <li class="list-group-item"><b>@animal.Information()</b></li>
+        }
+        else
+        {
+          <li class="list-group-item text-danger"><b>@animal.Information()</b></li>
+        }
       }
     </ul>
   </div>

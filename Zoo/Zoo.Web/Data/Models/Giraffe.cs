@@ -10,13 +10,15 @@ namespace Zoo.Web.Data.Models
     {
         public override void Hunger(int hungerRate)
         {
-            if (this.IsAlive && this.Health < 60)
+            if (this.IsAlive)
             {
-                this.IsAlive = false;
-                return;
-            }
+                if (this.Health < Constants.GiraffeMinHealthValue)
+                {
+                    this.IsAlive = false;
+                }
 
-            this.Health = Math.Max(0, this.Health - hungerRate);
+                this.Health = Math.Max(0, this.Health - hungerRate);
+            }
         }
 
         public override string Information()
