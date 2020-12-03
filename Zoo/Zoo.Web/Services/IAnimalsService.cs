@@ -10,5 +10,6 @@ namespace Zoo.Web.Services
     {
         void FeedAnimals();
         IEnumerable<Animal> GetAll();
+        int GetAliveAnimalsCount();
     }
 }

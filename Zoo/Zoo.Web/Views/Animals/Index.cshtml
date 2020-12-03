@@ -19,9 +19,26 @@
         Actions
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a asp-controller="Aniamls" asp-action="Feed" class="dropdown-item">Feed</a>
+        <a asp-controller="Animals" asp-action="Feed" class="dropdown-item">Feed</a>
         <a class="dropdown-item" href="#">Hunger</a>
       </div>
     </div>
+    <hr />
+    <button id="btn-alive-animals-count" type="button" class="btn btn-info">Get alive animals count</button>
+    <hr />
+    <div id="alert-alive-animals-count" class="alert alert-success" role="alert" style="display:none">
+    </div>
   </div>
 </div>
+
+@section Scripts{
+  <script>
+    $("#btn-alive-animals-count").click(async function () {
+      const response = await fetch("https://localhost:44308/api/animals/alivecount");
+
+      const data = await response.json();
+
+      $("#alert-alive-animals-count").text(`Alive animals: ${data.aliveAnimalscount}`).toggle(200);
+    });
+  </script>
+}

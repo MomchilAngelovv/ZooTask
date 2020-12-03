@@ -24,6 +24,11 @@ namespace Zoo.Web.Services
             }
         }
 
+        public int GetAliveAnimalsCount()
+        {
+            return this.db.GetAnimals().Count(a => a.IsAlive);
+        }
+
         public IEnumerable<Animal> GetAll()
         {
             return this.db.GetAnimals();
