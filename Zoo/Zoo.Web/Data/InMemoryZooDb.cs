@@ -15,7 +15,7 @@ namespace Zoo.Web.Data
             this.animals = new List<Animal>();
 
             for (int i = 0; i < 10; i++)
-            {
+            {   
                 var monkey = new Monkey();
                 var gireffe = new Giraffe();
                 var bear = new Bear();
